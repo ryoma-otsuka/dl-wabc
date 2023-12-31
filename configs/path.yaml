@@ -1,0 +1,18 @@
+path:
+  nas:
+    rootdir: "/home/bob/protein"
+  dataset:
+    rootdir: "${path.nas.rootdir}/dl-wabc/data/datasets/"
+    npz_format_data_dir: 
+      labelled_data: "${..rootdir}/logbot_data/npz_format/labelled/"
+      unlabelled_data: "${..rootdir}/logbot_data/npz_format/shuffled_20_v2/"
+  log:
+    rootdir: "/home/bob/protein/dl-wabc/data/model-output/${sub_root_dir}/"
+    logfile:
+      csv: log_training.csv
+    checkpoints:
+      dir: checkpoints_dir
+      fname: best_model_weights.pt
+    # pretrained:
+    #   dir: "/home/bob/protein/dl-wabc/data/model-output/${issue}/${pretrained_model_dir}/checkpoints_dir/"
+    #   fname: best_model_weights.pt
