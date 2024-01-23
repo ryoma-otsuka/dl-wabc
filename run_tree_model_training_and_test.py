@@ -310,8 +310,9 @@ def fit_tree_models(cfg, logger, X_train, X_valid, y_train, y_valid):
     elif cfg.model.model_name == "xgboost":
         # https://xgboost.readthedocs.io/en/stable/parameter.html
         params = {
-            'objective': 'multiclass',
+            'objective': 'multi:softprob', # https://github.com/dmlc/xgboost/blob/master/python-package/xgboost/sklearn.py#L1411-L1415
             'eval_metric': 'mlogloss',
+            # 'num_class': cfg.dataset.n_classes, # https://github.com/dmlc/xgboost/blob/master/python-package/xgboost/sklearn.py#L1393-L1400
             'booster': 'gbtree',
             'n_estimators': cfg.train.n_estimators,
             'early_stopping_rounds': 10,
